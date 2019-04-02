@@ -53,12 +53,131 @@ It doesn't care what item or how many there are, it just needs one.
 O(1)
 
 10.
+This algorithm is linear because the algorithm checks to see if the number is a prime number.
+The run time increases with the input number. 
+O(n)
 
+11.
+ With given 5 disks, after 7 recursive calls:
+ Move disk from rod  A  to rod  C
+ Move disk from rod  A  to rod  B
+ Move disk from rod  C  to rod  B
+ Move disk from rod  A  to rod  C
+ Move disk from rod  B  to rod  A
+ Move disk from rod  B  to rod  C
+ Move disk from rod  A  to rod  C
 
-
-
-
-
-
+ Number moves needed to complete the puzzle with 3, 4 and 5 disks are 7, 15 and 31 moves, respectively.
+ The runtime algorithm is linear. 
+ O(n)
 */ 
 
+function hanoi(disk, src, dest, tmp){
+    if(disk >= 1){
+      // Move a tower disks -1 to the temporary rod, using the destination rod
+      hanoi(disk -1, src, tmp, dest);
+      // Move the remaining disk to the destination peg
+      console.log('Move disk from rod ', src, ' to rod ', dest);
+      // Move the tower of disks -1 from the temporary rod to the destination rod using the source rod
+      hanoi(disk -1, tmp, dest, src);
+  
+    }
+    return;
+  }
+  
+//   console.log(hanoi(4, 'A', 'C', 'B'));
+/*
+12.
+ */
+ function countSheep(num){
+     for(let i=0; i<num; i++){
+         console.log(`${i+1} Another sheep jump over the fence`)
+     }
+     console.log('All sheep jumped over the fence')
+     return;
+ }
+
+//  console.log(countSheep(3));
+
+function powerCalc(num, power){
+    if(power < 1) return 0;
+    let res = num;
+    for (let i=1; i<power; i++){
+        res*=num;
+    }
+    return res;
+}
+
+// console.log(powerCalc(10, 3))
+
+function reverseStr(str){
+    return str.split('').reverse().join('');
+}
+
+// console.log(reverseStr('hello'))
+
+function triangular(n){
+    let res=0;
+    for(let i=1; i<=n; i++){
+        res+=i
+    }
+    return res;
+}
+
+// console.log(triangular(3))
+
+function splitter(str, sp){
+    return str.split(sp).join('')
+}
+
+// console.log(splitter('02/20/2020', '/'))
+
+function fibi(n){
+    let res = []
+    for(let i = 0; i <n; i++){
+        if(i === 0 || i === 1){
+            res.push(1)
+        } else {
+            res.push(res[i - 2] + res[i - 1])
+        }
+    }
+    return res;
+}
+
+// console.log(fibi(7))
+
+function factorial(n){
+    let res = 1;
+    for(let i = n; i > 0; i--){
+        res*=i;
+    }
+
+    return res;
+}
+
+// console.log(factorial(5))
+
+/* 
+13/14. 
+ 1.Counting Sheep
+ recursive: O(n)
+ iterative: O(n) 
+ 2.Power Calculator
+ recursive: O(n)
+ iterative: O(n) 
+ 3.Reverse String
+ recursive: O(n)
+ iterative: O(n) 
+ 4.nth Triangular Number
+ recursive: O(n)
+ iterative: O(n) 
+ 5.String Splitter
+ recursive: O(log(n))
+ iterative: O(n) 
+ 6.Fibonacci
+ recursive: O(n)
+ iterative: O(n) 
+ 7.Factorial
+ recursive: O(n)
+ iterative: O(n) 
+*/
